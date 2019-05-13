@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.4.1.js"></script>
     <script>
         $(document).ready(function () {
             $("button").click(function () {
-      
-
+                $('#div1').fadeToggle();
+                $('#div2').fadeToggle('slow');
+                $('#div3').fadeToggle(2000);
             });
         });
     </script>

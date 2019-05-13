@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/05_style.css">
     <title>jQuery - Reprograma</title>
 
 </head>
@@ -13,16 +14,30 @@
 
     <br> Name:
     <input type="text" name="nome">
+    <input type="password" name="password" placeholder="password">
 
-
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
     <script>
-        $("p").click(function () {
+        $("p").dblclick(function () {
             alert("p clicado");
         });
 
+        // .on (toda vez que eu passar o mouse) "mouseenter"
+        // .one (uma vez só) "mouseenter"
+
+        $('p').on("click", function(){
+            alert("p clicado")
+        })
+
+        // this (apenas para o que for 'focado')
+
+        // toggleClass ele esconde e faz aparecer o estilo quando tiver, e não tiver
+        // a classe 
         $(document).ready(function () {
             $("input").focus(function () {
-                $(this).css("background-color", "#00a458");
+                // $(this).addClass('fundoVerde');
+                // $(this).removeClass('fundoVerde');
+                $(this).toggleClass('fundoVerde');
             });
         });
 

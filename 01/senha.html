@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery - Reprograma</title>
+
+</head>
+
+<body>
+
+    <input type="password" name="senha" id="senha" />
+    
+    <br>
+    <br>
+
+    <div id="forca">Pontuação: </div>
+
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            // monitorar o que você está digitando
+            $('#senha').keyup(function(){
+                // alert('estou digitando');
+                // val é value do jquery
+                var senha = $(this).val();
+                var somaForca = 0;
+                
+                if(senha.length > 4){
+                    somaForca += 25;
+                }
+
+                var regNumerico = new RegExp(/[0-9]/i);
+                var regCaractere = new RegExp(/[a-z]/i);
+                var regCaractere = new RegExp(/[A-Z]/i);
+                var regCaractereEspecial = new RegExp(/[^a-z0-9]/i);
+
+                if(regNumerico.test(senha)){
+                    somaForca += 25;
+                }
+
+                if(regCaractere.test(senha)){
+                    somaForca += 25;
+                }
+
+                if(regCaractereEspecial.test(senha)){
+                    somaForca += 25;
+                }
+
+
+                var forca = 'Fraca';
+
+                if(somaForca >= 75){
+                    forca = 'Forte';
+                }
+
+                // switch(valor){
+                //     case 0: 
+                //     forca = 'senha fraca'
+                //     break;
+
+                //     case 25:
+                //     forca = 'senha fraca'
+                //     break;
+                // }
+
+
+
+
+
+                $('#forca').html(`Pontuação: ${somaForca} - Senha: ${senha} - Força: ${forca}`);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
