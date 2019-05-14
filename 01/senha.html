@@ -4,7 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery - Reprograma</title>
+    <style>
+    
+    .corVerde {
+        background-color: rgb(92, 209, 92);
+    }
+    
+    .corVermelha {
+        background-color: rgb(209, 121, 121);
+    }
 
+    </style>
 </head>
 
 <body>
@@ -49,11 +59,37 @@
                 }
 
 
-                var forca = 'Fraca';
+                // var forca = 'Fraca';
 
-                if(somaForca >= 75){
-                    forca = 'Forte';
+                // if(somaForca == 0) {
+                //     forca = '';
+                //     $(this).removeClass('corVermelha');
+                //     $(this).removeClass('corVerde');
+                // } else if(somaForca >= 75) {
+                //     forca = 'Forte';
+                //     $(this).removeClass('corVermelha');
+                //     $(this).addClass('corVerde');
+                // } else {
+                //     $(this).removeClass('corVerde');
+                //     $(this).addClass('corVermelha');
+                // }
+
+
+                // outro modo de fazer 
+
+                var verdadeiro = (somaForca >= 75);
+                if(somaForca > 0) {
+                    // verdadeiro = (somaForca >= 75); profê tinha feito assim sem var e nem let
+                    $(this).toggleClass('corVerde', verdadeiro);
+                    $(this).toggleClass('corVermelha', !verdadeiro);
+                } else {
+                    $(this).removeClass('corVerde', !verdadeiro);
+                    $(this).removeClass('corVermelha', !verdadeiro);
                 }
+                
+                
+
+
 
                 // switch(valor){
                 //     case 0: 
@@ -66,10 +102,8 @@
                 // }
 
 
-
-
-
-                $('#forca').html(`Pontuação: ${somaForca} - Senha: ${senha} - Força: ${forca}`);
+                // if ternário no final 
+                $('#forca').html(`Pontuação: ${somaForca} - Senha: ${senha} - Força: ${verdadeiro ? 'forte' : 'fraco'}`);
             });
         });
 
