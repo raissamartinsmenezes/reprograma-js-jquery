@@ -1,7 +1,8 @@
 function carregaCarta() {
-    $.getJSON('tarot.json', trocaCartaAleatoria);
+    $.get('http://localhost:3000/cartas', trocaCartaAleatoria);
 }
-
+// iremos consumir de verdade uma API e não consumir apenas um arquivo
+// tirando o $.getJSON e colocando $.get de um servidor local que subimos 
 
 // parâmetro padrão, o primeiro o que eu tô consumindo da API e o status dela
 function trocaCartaAleatoria(cartas, status) {
@@ -12,13 +13,11 @@ function trocaCartaAleatoria(cartas, status) {
         $('.tipo').text(cartas[numeroAleatorio].tipo);
         $('.descricao').text(cartas[numeroAleatorio].descricao);
         $('.image').attr('src', cartas[numeroAleatorio].imagem);
-        $('.saiba-mais').attr('src', cartas[numeroAleatorio].link);
-        // a linha de cima é para estar com 'href'
+        $('.saiba-mais').attr('href', cartas[numeroAleatorio].link);
     } else {
         $('.mensagem').text('Não foi possível carregar a carta');
     }
 };
-
 
 $(document).ready(function () {
     carregaCarta();
